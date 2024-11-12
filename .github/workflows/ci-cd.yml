@@ -1,20 +1,20 @@
 # .github/workflows/ci-cd.yml
 name: CI/CD Pipeline for HTML
-on:
-# The workflow runs when you push to the 'main' branch
-push:
-branches:
-- main
+on: 
+  # The workflow runs when you push to the 'main' branch
+  push:
+    branches:
+      - main
 jobs:
-build:
-runs-on: ubuntu-latest # Use the latest Ubuntu runner provided by GitHub
-steps:
-# Step 1: Checkout the code
-- name: Checkout code
-uses: actions/checkout@v2
-# Step 2: Deploy to GitHub Pages
-- name: Deploy to GitHub Pages
-uses: peaceiris/actions-gh-pages@v3
-with:
-github_token: ${{ secrets.GITHUB_TOKEN }} # This is a secret GitHub token that is auto-provided by GitHub
-publish_dir: ./ # The directory to publish, in this case, the root folder
+  build:
+    runs-on: ubuntu-latest # Use the latest Ubuntu runner provided by GitHub
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v2
+      # Step 2: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }} # This is a secret GitHub token that is auto-provided by GitHub
+          publish_dir: ./ # The directory to publish, in this case, the root folder
